@@ -36,3 +36,29 @@ package Day1;
             return ans;
         }
     }
+
+
+//2. Majority element
+//https://practice.geeksforgeeks.org/problems/majority-element-1587115620/1/?track=md-arrays&batchId=144#
+
+    class Solution
+    {
+        static int majorityElement(int a[], int size)
+        {
+            int[] map = new int[a[size-1]+2];
+            
+            for(int i=0; i<size; i++)
+            {
+                map[a[i]]++;
+            }
+            
+            for(int i=0; i<map.length; i++){
+                if(map[i] > size/2){
+                    return i;
+                }
+            }
+            return -1;
+        }
+    }
+
+
