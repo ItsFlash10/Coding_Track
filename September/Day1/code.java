@@ -1,7 +1,7 @@
 package Day1;
-//1. https://practice.geeksforgeeks.org/problems/maximize-number-of-1s0905/1/?track=md-arrays&batchId=144#
 
-//Maximize Number of 1's
+//1. Maximize Number of 1's
+// https://practice.geeksforgeeks.org/problems/maximize-number-of-1s0905/1/?track=md-arrays&batchId=144#
 
     class Solve {
         // m is maximum of number zeroes allowed to flip
