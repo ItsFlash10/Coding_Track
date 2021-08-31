@@ -134,3 +134,59 @@ import java.util.*;
             }
         }
     }
+
+//5. Product array puzzle
+//https://practice.geeksforgeeks.org/problems/product-array-puzzle4525/1/?track=md-arrays#
+
+    class prodPuzzle 
+    { 
+        public static long[] productExceptSelf(int nums[], int n) 
+        { 
+            long[] prod_arr = new long[n];
+            long prod = 1;
+            int zeroFlag = 0;
+            for(int i = 0; i<n; i++)
+            {
+                if(nums[i] != 0)
+                {
+                    prod = nums[i]*prod;
+                }
+                else
+                {
+                    zeroFlag += 1;
+                }
+            }
+            
+            if(zeroFlag > 1)
+            {
+                for(int i = 0; i<n; i++)
+                {
+                    prod_arr[i] = 0; 
+                }
+                return prod_arr;
+                
+            }
+            if(zeroFlag == 1)
+            {
+                for(int i = 0; i<n; i++)
+                {
+                    if(nums[i] != 0)
+                    {
+                        prod_arr[i] = 0;
+                    }
+                    else
+                    {
+                        prod_arr[i] = prod;
+                    }
+                }
+                return prod_arr;
+                
+            }
+            
+            for(int i = 0; i<n; i++)
+            {
+                prod_arr[i] = prod/nums[i]; 
+            }
+            return prod_arr;
+        } 
+    }
