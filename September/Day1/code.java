@@ -29,10 +29,7 @@ import java.util.*;
                 if(length>ans){
                     ans = length;
                 }
-            }
-            
-            
-            
+            } 
             return ans;
         }
     }
@@ -82,9 +79,6 @@ import java.util.*;
                 idx--;
             }
             arr.add(0, 1);
-            return arr;
-            
-            
-            
+            return arr;    
         }
     }
