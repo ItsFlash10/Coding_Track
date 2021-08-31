@@ -1,5 +1,5 @@
 package Day1;
-
+import java.util.*;
 //1. Maximize Number of 1's
 // https://practice.geeksforgeeks.org/problems/maximize-number-of-1s0905/1/?track=md-arrays&batchId=144#
 
@@ -61,4 +61,30 @@ package Day1;
         }
     }
 
+//3. Plus One
+// https://practice.geeksforgeeks.org/problems/plus-one/1/?track=md-arrays&batchId=144#
 
+    class plusOne {
+        static ArrayList<Integer> increment(ArrayList<Integer> arr , int N) {
+            
+            int idx = N-1;
+            while(idx >= 0)
+            {
+                if(arr.get(idx) < 9)
+                {
+                    arr.set(idx, arr.get(idx)+1);
+                    return arr;
+                }
+                else
+                {
+                    arr.set(idx, 0);
+                }
+                idx--;
+            }
+            arr.add(0, 1);
+            return arr;
+            
+            
+            
+        }
+    }
