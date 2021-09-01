@@ -196,29 +196,33 @@ import java.util.*;
     // Last question ka dusra method dekhna hai 
     // Last question ka dusra method dekhna hai 
 
-    class Solution
-{
-    static int searchInsertK(int Arr[], int N, int k)
+//6 Search insert position of K in a sorted array 
+//https://practice.geeksforgeeks.org/problems/search-insert-position-of-k-in-a-sorted-array/1/?track=md-searching&batchId=144#    
+
+
+    class insertionIdx
     {
-        int s = 0;
-        int e = N-1;
-        int ans = N;
-        
-        while(s<=e)
+        static int searchInsertK(int Arr[], int N, int k)
         {
-            int mid = s + (e-s)/2;
+            int s = 0;
+            int e = N-1;
+            int ans = N;
+            
+            while(s<=e)
+            {
+                int mid = s + (e-s)/2;
+                        
+                if(Arr[mid] < k)
+                {
+                    s = mid+1;
+                }
+                else 
+                {
+                    ans = mid;
+                    e = mid-1;
+                }
+            }
+            return ans;
                     
-            if(Arr[mid] < k)
-            {
-                s = mid+1;
-            }
-            else 
-            {
-                ans = mid;
-                e = mid-1;
-            }
         }
-        return ans;
-                
     }
-}
