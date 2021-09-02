@@ -1,5 +1,6 @@
 package Day1;
 import java.util.*;
+
 //1. Maximize Number of 1's
 // https://practice.geeksforgeeks.org/problems/maximize-number-of-1s0905/1/?track=md-arrays&batchId=144#
 
