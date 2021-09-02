@@ -43,6 +43,65 @@ import java.util.*;
             return new pair(first_occ, last_occ);
         }
     }
+//Same as above but with O(log (N)) complexity as we use binary search.
+    class occurenceBS{
+        
+        public pair indexes(long v[], long x)
+        {
+
+            int low = 0;
+            int high = v.length-1;
+            int first_occ = -1;
+            
+            while(low<=high)
+            {
+                int mid = low + (high-low)/2;
+                
+                if(v[mid] < x)
+                {
+                    low = mid + 1;
+                }
+                
+                else if(v[mid] > x)
+                {
+                    high = mid - 1;
+                }
+                
+                else
+                {
+                    first_occ = mid;
+                    high = mid - 1;
+                }
+            }
+            
+            low = 0;
+            high = v.length-1;
+            int last_occ = -1;
+            
+            while(low<=high)
+            {
+                int mid = low + (high-low)/2;
+                
+                if(v[mid] < x)
+                {
+                    low = mid + 1;
+                }
+                
+                else if(v[mid] > x)
+                {
+                    high = mid - 1;
+                }
+                
+                else
+                {
+                    last_occ = mid;
+                    low = mid + 1;
+                }
+            }
+            
+            return new pair(first_occ, last_occ);
+        }
+    }
 
 
 
