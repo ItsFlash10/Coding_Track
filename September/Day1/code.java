@@ -187,14 +187,36 @@ import java.util.*;
             {
                 prod_arr[i] = prod/nums[i]; 
             }
-            return prod_arr;
+            // return prod_arr; //commented to resolve unreachable code for next code(i.e. better approach)
+
+            //Better approach
+        
+            long[] left = new long[n];
+            long[] right = new long[n];
+            long[] ans = new long[n];
+            
+            left[0] = 1;
+            right[n-1] = 1;
+            
+            for(int i = 1; i < n; i++)
+            {
+                left[i] = nums[i-1]*left[i-1];
+            }
+                
+            for(int i = n-2; i >= 0; i--)
+            {
+                right[i] = nums[i+1]*right[i+1];
+            }
+                
+            for(int i = 0; i < n; i++)
+            {
+                ans[i] = left[i]*right[i];
+            }
+                
+            return ans;
         } 
     }
 
-    // Last question ka dusra method dekhna hai 
-    // Last question ka dusra method dekhna hai 
-    // Last question ka dusra method dekhna hai 
-    // Last question ka dusra method dekhna hai 
 
 //6 Search insert position of K in a sorted array 
 //https://practice.geeksforgeeks.org/problems/search-insert-position-of-k-in-a-sorted-array/1/?track=md-searching&batchId=144#    
