@@ -1,5 +1,4 @@
 package Day2;
-import java.util.*;
 
 //1. Left most and right most index 
 //https://practice.geeksforgeeks.org/problems/find-first-and-last-occurrence-of-x0849/0/?track=md-searching#
