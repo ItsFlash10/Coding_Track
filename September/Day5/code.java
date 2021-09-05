@@ -41,7 +41,7 @@ class romanToInt{
         int size = str.length();
         int sum = 0;
         
-        for(int i = size - 1; i>=0; i--)
+        for(int i = size - 1; i>=0; i--) //we can run the loop from as well
         {
             if(str.charAt(i)=='V' || str.charAt(i) == 'X')
             {
