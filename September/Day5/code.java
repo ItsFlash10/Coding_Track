@@ -134,5 +134,7 @@ class sumConSubArray
         }
      
         System.out.println(findSubSumBtoC(A, N, B, C));
+
+        scn.close(); //scn must be closed in order prevent resource leakage
     }
 }
