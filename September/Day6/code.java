@@ -40,3 +40,22 @@ class longestSubsequence
 	}
 }
 
+//2. Searching an element in a sorted array (Ternary Search)
+//https://practice.geeksforgeeks.org/problems/3d27d4683c121c1f152ee8f41279255dc4430cf6/1/?track=md-design&batchId=144#
+
+
+//NAIVE SOLUTION TO FIND AN ELEMENT
+class ternSearch{
+
+    static int ternarySearch(int arr[], int N, int K)
+    {
+        for(int i = 0; i<arr.length; i++)
+        {
+            if(arr[i] == K)
+            {
+                return 1;
+            }
+        }
+        return -1;
+    }
+}
