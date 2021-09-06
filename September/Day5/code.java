@@ -4,7 +4,7 @@ import java.util.*;
 //1. Reverse words in a given string
 //https://practice.geeksforgeeks.org/problems/reverse-words-in-a-given-string5459/1/?track=md-string&batchId=144#
 
-class revString 
+class revString
 {
     //Function to reverse words in a given string.
     String reverseWords(String S)
@@ -72,5 +72,67 @@ class romanToInt{
         return sum;
         
 
+    }
+}
+
+
+// Sum of consicutive subarray in a given range
+
+class sumConSubArray
+{
+
+    static int countSub(int arr[], int n, int x)
+    {
+
+        int start = 0;
+        int end = 0;
+        int sum = 0;
+        int count = 0;
+
+        while (end < n)
+        {
+     
+            sum += arr[end];
+
+            while (start <= end && sum > x)
+            {
+                sum -= arr[start];
+                start++;
+            }
+
+            count += (end - start + 1);
+            end++;
+        }
+     
+        return count;
+    }
+
+    static int findSubSumBtoC(int A[], int N,
+                              int B, int C)
+    {
+     
+        int right_count = countSub(A, N, C);
+
+        int left_count = countSub(A, N, B - 1);
+     
+        return right_count - left_count;
+    }
+
+    public static void main (String[] args)
+    {
+        
+        Scanner scn = new Scanner(System.in);
+        int N = scn.nextInt();
+        int B = scn.nextInt();
+        int C = scn.nextInt();
+        
+        int[] A = new int[N];
+
+        for(int i =0; i<N; i++)
+        {
+            A[i] = scn.nextInt();
+        }
+     
+        System.out.println(findSubSumBtoC(A, N, B, C));
     }
 }
