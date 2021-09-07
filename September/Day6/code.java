@@ -49,13 +49,43 @@ class ternSearch{
 
     static int ternarySearch(int arr[], int N, int K)
     {
-        for(int i = 0; i<arr.length; i++)
+        int start = 0;
+        int end = arr.length-1;
+        
+        while(start <= end)
         {
-            if(arr[i] == K)
+            int mid1 = start + (end-start)/3;  
+            int mid2 = end - (end-start)/3;  
+            
+            if(arr[mid1] == K || arr[mid2] == K)
             {
                 return 1;
             }
+            
+            if(arr[mid1] > K)
+            {
+                end = mid1 - 1;
+            }
+            else if(arr[mid2] < K)
+            {
+                start = mid2 + 1;
+            }
+            else
+            {
+                start = mid1 + 1;
+                end = mid2 - 1;
+            }
         }
+        
         return -1;
+        
+        // for(int i = 0; i<arr.length; i++)
+        // {
+        //     if(arr[i] == K)
+        //     {
+        //         return 1;
+        //     }
+        // }
+        // return -1;
     }
 }
