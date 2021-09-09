@@ -1,5 +1,5 @@
 package Day9;
-import java.util.*;
+// import java.util.*;
 
 // 1. Find Missing And Repeating
 //https://practice.geeksforgeeks.org/problems/find-missing-and-repeating2512/1#
@@ -49,5 +49,27 @@ class Solution{
         {
             arr[i] = map[i+1];
         }
+    }
+}
+
+//3. Jump Game
+//https://practice.geeksforgeeks.org/problems/jump-game/0/?track=md-arrays&batchId=144
+
+class jumpGame{
+    static int canReach(int[] A, int N) {
+        
+        int reachable = 0;
+        
+        for(int i =0; i<N; i++)
+        {
+            if(reachable < i)
+            {
+                return 0;
+            }
+            
+            reachable = Math.max(reachable, i+A[i]);
+        }
+        return 1;
+        
     }
 }
