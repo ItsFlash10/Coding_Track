@@ -42,4 +42,53 @@ class Solution
         
     }
 }
+       
+
+//2. Trapping Rain Water
+//https://practice.geeksforgeeks.org/problems/trapping-rain-water-1587115621/1/?track=md-arrays&batchId=144
+
+class rainWater{
+    
+    // arr: input array
+    // n: size of array
+    // Function to find the trapped water between the blocks.
+    static long trappingWater(int arr[], int n) { 
         
+        int left = 0;
+        int right = n-1;
+        
+        int leftMax = 0;
+        int rightMax = 0;
+        long res = 0;
+        
+        while(left <= right)
+        {
+            if(arr[left] <= arr[right])
+            {
+                if(arr[left] >= leftMax)
+                {
+                    leftMax = arr[left];
+                }
+                else
+                {
+                    res += leftMax - arr[left];
+                }
+                left++;
+            }
+            else
+            {
+                if(arr[right] >= rightMax)
+                {
+                    rightMax = arr[right];
+                }
+                else
+                {
+                    res += rightMax - arr[right];
+                }
+                right--;
+            }
+            
+        }
+        return res;
+    } 
+}
