@@ -22,7 +22,7 @@ class Solution
 	        {
 	            temp_sum = Arr[i] + Arr[start] + Arr[end];
 	            
-	            if(Math.abs(target-temp_sum) < Math.abs(target-closest_sum))
+	            if(Math.abs(1L*target-temp_sum) < Math.abs(1L*target-closest_sum))
 	            {
 	                closest_sum = temp_sum;
 	            }
