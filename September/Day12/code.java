@@ -35,3 +35,44 @@ class minOpperationToInc{
         return count;
     }
 }
+
+//918. Maximum Sum Circular Subarray
+//https://leetcode.com/problems/maximum-sum-circular-subarray/
+
+class circularMax{
+    public int maxSubarraySumCircular(int[] nums) {
+        
+        int straightMaxSum = Integer.MIN_VALUE;
+        int straightMinSum = Integer.MAX_VALUE;
+        int tempMax = 0;
+        int tempMin = 0;
+        int arraySum = 0;
+        
+        for(int i = 0; i < nums.length; i++)
+        {
+            tempMax += nums[i];
+            straightMaxSum = Math.max(tempMax, straightMaxSum);
+            if(tempMax < 0)
+            {
+                tempMax = 0;
+            }
+            
+            tempMin += nums[i];
+            straightMinSum = Math.min(tempMin, straightMinSum);
+            if(tempMin > 0)
+            {
+                tempMin = 0;
+            }
+            
+            arraySum += nums[i];
+        }
+        
+        if(arraySum == straightMinSum)
+        {
+            return straightMaxSum;
+        }
+
+        return Math.max((arraySum-straightMinSum), straightMaxSum);
+
+    }
+}
