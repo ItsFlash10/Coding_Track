@@ -1,4 +1,5 @@
 package Day12;
+import java.util.*;
 
 //1827. Minimum Operations to Make the Array Increasing
 //https://leetcode.com/problems/minimum-operations-to-make-the-array-increasing/
@@ -74,5 +75,28 @@ class circularMax{
 
         return Math.max((arraySum-straightMinSum), straightMaxSum);
 
+    }
+}
+
+//1. Two Sum/Key Pair(GFG)
+//https://leetcode.com/problems/two-sum/
+
+class keyPair{
+    public int[] twoSum(int[] nums, int target) {
+        
+        int[] res = new int[2];
+        HashMap<Integer, Integer> map = new HashMap<>();
+        
+        for(int i = 0; i < nums.length; i++)
+        {
+            if(map.containsKey(target-nums[i]))
+            {
+                res[0] = map.get(target-nums[i]);
+                res[1] = i;
+                return res;
+            }
+            map.put(nums[i], i);
+        }
+        return res;
     }
 }
