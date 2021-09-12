@@ -100,3 +100,63 @@ class keyPair{
         return res;
     }
 }
+
+// 18. 4Sum
+//https://leetcode.com/problems/4sum/
+
+class quadSum{
+    public List<List<Integer>> fourSum(int[] nums, int target) {
+        
+        
+        ArrayList<List<Integer>> res = new ArrayList<List<Integer>>();
+        
+        if(nums == null || nums.length == 0)
+            return res;
+        
+        Arrays.sort(nums);
+        int n = nums.length;
+        for(int i = 0; i<nums.length; i++)
+        {
+            for(int j = i+1; j<nums.length; j++)
+            {
+                int start = j+1;
+                int end = n-1;
+                int tempTarget = target - nums[i] - nums[j];
+                
+                while(start<end)
+                {
+                    int twoSum = nums[start] + nums[end];
+                    
+                    if(tempTarget > twoSum)
+                        start++;
+                    
+                    else if(tempTarget < twoSum) 
+                        end--;
+                    
+                    else
+                    {
+                        ArrayList<Integer> quad = new ArrayList<>();
+                        quad.add(nums[i]);
+                        quad.add(nums[j]);
+                        quad.add(nums[start]);
+                        quad.add(nums[end]);
+                        res.add(quad);
+                        
+                        while(start < end && nums[start] == quad.get(2)) 
+                        {
+                            start++;
+                        }
+                        
+                        while(start < end && nums[end] == quad.get(3)) 
+                        {
+                            end--;
+                        }
+                    }
+                }
+                while(j+1 < n && nums[j+1] == nums[j]) j++;                   
+            }
+            while(i+1 <n && nums[i+1] == nums[i]) i++;
+        }
+        return res;
+    }
+}
