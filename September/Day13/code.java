@@ -91,3 +91,33 @@ class repChar
         return "-1";
     }
 } 
+
+// Common elements
+//https://practice.geeksforgeeks.org/problems/common-elements1132/0/?track=md-hashing&batchId=144#
+
+class cmnEle
+{
+    ArrayList<Integer> commonElements(int A[], int B[], int C[], int n1, int n2, int n3) 
+    {
+        ArrayList<Integer> intersection = new ArrayList<>();
+        int i = 0;
+        int j = 0;
+        int k = 0;
+        
+        while(i<n1 && j<n2 && k<n3)
+        {
+            if(A[i] == B[j] && B[j] == C[k])
+            {
+                if(!intersection.contains(A[i]))
+                {
+                    intersection.add(A[i]);
+                }
+                i++; j++; k++;
+            }
+            else if(A[i] < B[j]) i++;
+            else if(B[j] < C[k]) j++;
+            else k++;
+        }
+        return intersection;
+    }
+}
