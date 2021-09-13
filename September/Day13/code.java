@@ -1,4 +1,5 @@
 package Day13;
+import java.util.*;
 
 //1. Triplet sum in an array
 //https://practice.geeksforgeeks.org/problems/triplet-sum-in-array-1587115621/1#
@@ -41,5 +42,29 @@ class Solution
        }
        return true;
     
+    }
+}
+
+// Stock buy and sell 
+//https://practice.geeksforgeeks.org/problems/stock-buy-and-sell-1587115621/1/?track=md-arrays&batchId=144#
+
+class stock{
+    
+    //Function to find the days of buying and selling stock for max profit.
+    ArrayList<ArrayList<Integer> > stockBuySell(int A[], int n) {
+
+        ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
+
+        for(int i = 1; i<n; i++)
+        {
+            if(A[i]>=A[i-1])
+            {
+                ArrayList<Integer> pro = new ArrayList<>();
+                pro.add(i-1);
+                pro.add(i);
+                res.add(pro);
+            }
+        }
+        return res;
     }
 }
