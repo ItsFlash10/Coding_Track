@@ -68,3 +68,26 @@ class stock{
         return res;
     }
 }
+
+//Find first repeated character
+//https://practice.geeksforgeeks.org/problems/find-first-repeated-character4108/1/?track=md-hashing&batchId=144#
+
+class repChar 
+{ 
+    String firstRepChar(String s) 
+    { 
+        HashSet<Character> map = new HashSet<>();
+        String res = "";
+        
+        for(int i = 0; i<s.length(); i++)
+        {
+            if(map.contains(s.charAt(i)))
+            {
+                res += s.charAt(i);
+                return res;
+            }
+            map.add(s.charAt(i));
+        }
+        return "-1";
+    }
+} 
