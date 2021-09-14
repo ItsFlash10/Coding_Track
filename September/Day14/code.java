@@ -154,8 +154,7 @@ class duplicateCheck{
                 return true;
             }
         }
-        return false;
-        
+        return false;        
     }
 }
 
