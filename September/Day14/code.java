@@ -193,3 +193,84 @@ class minimumIndexChar
         return -1;
     }
 }
+
+//76. Minimum Window Substring
+//https://leetcode.com/problems/minimum-window-substring/
+
+//TLE in GFG but accepted in LeetCode
+class Solution{
+    public String minWindow(String s, String p) {
+        
+        String res = "";
+        
+        HashMap<Character, Integer> mapP = new HashMap<>();
+        //frequency map
+        for(int i = 0; i<p.length(); i++)
+        {
+            char ch = p.charAt(i);
+            mapP.put(ch, mapP.getOrDefault(ch, 0) + 1);
+        }
+        
+        int i = -1;
+        int j = -1;
+        int curCount = 0;
+        int desiredCount = p.length();
+        
+        HashMap<Character, Integer> mapS = new HashMap<>();
+        
+        while(true)
+        {
+            boolean loop1 = false;
+            boolean loop2 = false;
+            //acquire
+            while(i < s.length() - 1 && curCount < desiredCount)
+            {
+                i++;
+                char ch = s.charAt(i);
+                mapS.put(ch, mapS.getOrDefault(ch,0)+1);
+                
+                
+                if(mapS.getOrDefault(ch,0) <= mapP.getOrDefault(ch,0))
+                {
+                    curCount++;
+                }
+                loop1 = true;
+            }
+            
+            //collect answer and release 
+            while(j<i && curCount == desiredCount)
+            {
+                String potAns = s.substring(j+1, i+1);
+                
+                if(res.length() == 0 || potAns.length() < res.length())
+                {
+                    res = potAns;
+                }
+                
+                j++;
+                char ch = s.charAt(j);
+                if(mapS.get(ch) == 1)
+                {
+                    mapS.remove(ch);
+                }
+                else
+                {
+                    mapS.put(ch, mapS.get(ch)-1);
+                }
+                
+                if(mapS.getOrDefault(ch, 0) < mapP.getOrDefault(ch, 0))
+                {
+                    curCount--;
+                }
+                loop2 = true;
+            }
+            if(loop1 == false && loop2 == false)
+            {
+                break;
+            }
+        }
+        
+        return res;
+        
+    }
+}
