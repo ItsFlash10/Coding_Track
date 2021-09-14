@@ -158,3 +158,39 @@ class duplicateCheck{
         
     }
 }
+
+//Minimum indexed character 
+//https://practice.geeksforgeeks.org/problems/minimum-indexed-character-1587115620/1/?track=md-hashing&batchId=144#
+
+class minimumIndexChar
+{
+    //Function to find the minimum indexed character.
+    public static int minIndexChar(String str, String patt)
+    {
+        HashMap<Character,Integer> map = new HashMap<>();
+        
+        for(int i = 0; i<str.length(); i++)
+        {
+            if(!map.containsKey(str.charAt(i)))
+            {
+                map.put(str.charAt(i), i);
+            }
+        }
+        
+        int res = Integer.MAX_VALUE;
+        int flag = 0;
+        for(int i = 0; i<patt.length(); i++)
+        {
+            if(map.containsKey(patt.charAt(i)))
+            {
+                res = Math.min(map.get(patt.charAt(i)), res);
+                flag++;
+            }
+        }
+        if(flag>0)
+        {
+            return res;
+        }
+        return -1;
+    }
+}
