@@ -167,3 +167,40 @@ class maxLength
     }
 }
 
+//Largest subarray of 0's and 1's  **THIS SAME AS ABOVE(PATTTERN)
+//https://practice.geeksforgeeks.org/problems/largest-subarray-of-0s-and-1s/1/?track=md-hashing&batchId=144#
+
+class Solution {
+
+    // arr[] : the input array containing 0s and 1s
+    int maxLen(int[] arr, int N)
+    {
+        int res = 0;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int sum = 0;
+        
+        for(int i = 0; i<N; i++)
+        {
+            if(arr[i] == 1) sum += 1; //treating 1 as +1
+            
+            else if(arr[i] == 0) sum -= 1; //treating 0 as -1
+            
+            if(sum == 0)
+            {
+                res = i + 1;
+            }
+            else
+            {
+                if(map.containsKey(sum))
+                {
+                    res = Math.max(res, i - map.get(sum));
+                }
+                else
+                {
+                    map.put(sum, i);
+                }
+            }
+        }
+        return res;
+    }
+}
