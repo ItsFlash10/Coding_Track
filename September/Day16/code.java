@@ -72,3 +72,63 @@ class firstNegativeInWindow{
         return res;
     }
 }
+
+//Count Occurences of Anagrams 
+//https://practice.geeksforgeeks.org/problems/count-occurences-of-anagrams5839/1#
+
+class anagrams{
+
+    int search(String pat, String txt) {
+        
+        int res = 0;
+        
+        int k = pat.length();
+        HashMap<Character, Integer> map = new HashMap<>();
+        
+        for(int i = 0; i<pat.length(); i++)
+        {
+            char ch = pat.charAt(i);
+            map.put(ch, map.getOrDefault(ch,0) + 1);
+        }
+        // System.out.print(map.entrySet()+" "+map.size()+" "+k);
+        
+        int i = 0;
+        int j = 0;
+        int count = map.size();
+        
+        while(j < txt.length())
+        {
+            char ch = txt.charAt(j);
+            if(map.containsKey(ch))
+            {
+                map.put(ch, map.getOrDefault(ch,0) - 1);
+                if(map.get(ch) == 0)
+                {
+                    count--;
+                }
+            }
+            
+            if(j-i+1 == k)
+            {
+                if(count == 0)
+                {
+                    res++;
+                }
+
+                if(map.containsKey(txt.charAt(i)))
+                {
+                    map.put(txt.charAt(i), map.getOrDefault(txt.charAt(i),0)+1);
+                        
+                    if(map.get(txt.charAt(i)) == 1)
+                    {
+                        count++;
+                    }
+                }
+                i++;
+            }
+            j++;
+        }
+        return res;
+    }
+}
+
