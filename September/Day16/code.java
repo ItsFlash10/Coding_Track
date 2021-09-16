@@ -132,3 +132,38 @@ class anagrams{
     }
 }
 
+//Largest subarray with 0 sum 
+//https://practice.geeksforgeeks.org/problems/largest-subarray-with-0-sum/1
+
+class maxLength
+{
+    int maxLen(int arr[], int n)
+    {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int sum = 0;
+        int maxi = 0;
+        
+        for(int i = 0; i<n; i++)
+        {
+            sum += arr[i];
+            if(sum == 0)
+            {
+                maxLen = i+1;
+            }
+            else
+            {
+                if(map.get(sum) != null)
+                {
+                    maxLen = Math.max(maxi, i - map.get(sum));
+                }
+                else
+                {
+                    map.put(sum, i);
+                }
+            }
+        }
+        return maxi;
+
+    }
+}
+
