@@ -148,13 +148,13 @@ class maxLength
             sum += arr[i];
             if(sum == 0)
             {
-                maxLen = i+1;
+                maxi = i+1;
             }
             else
             {
                 if(map.get(sum) != null)
                 {
-                    maxLen = Math.max(maxi, i - map.get(sum));
+                    maxi = Math.max(maxi, i - map.get(sum));
                 }
                 else
                 {
