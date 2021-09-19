@@ -40,3 +40,33 @@ class Solution
         return res;
     }
 }
+
+//Zero Sum Subarrays 
+//https://practice.geeksforgeeks.org/problems/zero-sum-subarrays1825/1/?track=md-hashing&batchId=144#
+
+class zeroSubArrays{
+    //Function to count subarrays with sum equal to 0.
+    public static long findSubarray(long[] arr ,int n) 
+    {
+        HashMap<Long, Integer> map = new HashMap<>();
+        map.put((long)0,1);
+        long sum = 0;
+        int res = 0;
+
+        for (int i = 0; i < n; i++) {
+
+            sum += arr[i];
+
+            if (map.containsKey(sum)) 
+            {
+                res += map.get(sum);
+                map.put(sum,map.get(sum)+1);
+            }
+            else
+            {
+                map.put(sum,1);
+            }
+        }
+        return res;
+    }
+}
