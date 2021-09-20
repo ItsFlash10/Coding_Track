@@ -245,3 +245,44 @@ class sortWRTA2{
         return res;
     }
 }
+
+// Print Anagrams Together
+//https://practice.geeksforgeeks.org/problems/print-anagrams-together/0/?track=md-hashing&batchId=144
+
+class anagramsTogether{
+    public List<List<String>> Anagrams(String[] string_list) {
+        
+        ArrayList<List<String>> res = new ArrayList<>();
+        //map for freq and the string  && HashMap can be KEY of a HashMap
+        HashMap<HashMap<Character, Integer>, ArrayList<String>> map = new HashMap<>();
+        
+        for(String str : string_list)
+        {
+            HashMap<Character, Integer> freqMap = new HashMap<>();
+            
+            for(int i =0;i <str.length(); i++)
+            {
+                char ch = str.charAt(i);
+                freqMap.put(ch, freqMap.getOrDefault(ch,0)+1);
+            }
+            
+            if(!map.containsKey(freqMap))
+            {
+                ArrayList<String> list = new ArrayList<>();
+                list.add(str);
+                map.put(freqMap, list);
+            }
+            else
+            {
+                ArrayList<String> list = map.get(freqMap); //area to focus
+                list.add(str);
+            }
+        }
+        
+        for(ArrayList<String> val : map.values())
+        {
+            res.add(val);
+        }
+        return res;
+    }
+}
