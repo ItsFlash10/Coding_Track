@@ -286,3 +286,29 @@ class anagramsTogether{
         return res;
     }
 }
+
+//Intersection of two arrays
+//https://practice.geeksforgeeks.org/problems/intersection-of-two-arrays2404/0/?track=md-hashing&batchId=144#
+
+class intersectionPoints{
+    public static int NumberofElementsInIntersection(int a[], int b[], int n, int m) {
+        
+        int count = 0;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        
+        for(int i = 0; i<n; i++)
+        {
+            map.put(a[i], map.getOrDefault(a[i], 0)+1);
+        }
+        
+        for(int ele : b)
+        {
+            if(map.containsKey(ele))
+            {
+                count++;
+                map.remove(ele);
+            }
+        }
+        return count;
+    }
+}
