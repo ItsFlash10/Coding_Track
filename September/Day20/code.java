@@ -204,4 +204,44 @@ class subArrayDivByK{
         return res;
     }
 }
+
+//Sort an array according to the other 
+//https://practice.geeksforgeeks.org/problems/relative-sorting4323/0/?track=md-hashing&batchId=144#
  
+class sortWRTA2{
+    public static int[] sortA1ByA2(int A1[], int N, int A2[], int M)
+    {
+        int[] res = new int[N];
+        int k = 0;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        
+        for(int i = 0; i<N; i++)
+        {
+            map.put(A1[i], map.getOrDefault(A1[i],0)+1);
+        }
+        //adding ele according to A2 in the res and removing it from the map
+        for(int i = 0; i<M; i++)
+        {
+            if(map.containsKey(A2[i]))
+            {
+                for(int j = 0; j<map.get(A2[i]); j++)
+                {
+                    res[k++] = A2[i];
+                }
+                map.remove(A2[i]);
+            }
+        }
+        
+        Arrays.sort(A1);
+        //adding the remaining ele into the result after sorting it
+        for(int i = 0; i<N; i++)
+        {
+            if(map.containsKey(A1[i]))
+            {
+                res[k++] = A1[i];
+            }
+        }
+        
+        return res;
+    }
+}
