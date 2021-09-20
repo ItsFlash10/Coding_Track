@@ -70,3 +70,40 @@ class zeroSubArrays{
         return res;
     }
 }
+
+//209. Minimum Size Subarray Sum
+//https://leetcode.com/problems/minimum-size-subarray-sum/
+
+class minimumSubArray {
+    public int minSubArrayLen(int target, int[] nums) {
+        
+        int res = Integer.MAX_VALUE;
+        
+        int i = 0;
+        int j = 0;
+        int sum = 0;
+        
+        while(j < nums.length)
+        {
+            sum += nums[j];
+            
+            if(sum < target)
+            {
+                j++;    
+            }
+                        
+            else if(sum >= target)
+            {
+                while(sum >= target)
+                {
+                    res = Math.min(res, j-i+1);
+
+                    sum -= nums[i];
+                    i++;
+                }
+                j++;
+            }
+        }
+        return res == Integer.MAX_VALUE ? 0 : res;
+    }
+}
