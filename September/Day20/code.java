@@ -107,3 +107,28 @@ class minimumSubArray {
         return res == Integer.MAX_VALUE ? 0 : res;
     }
 }
+
+//560. Subarray Sum Equals K
+//https://leetcode.com/problems/subarray-sum-equals-k/
+
+class sumOfSubArray{
+    public int subarraySum(int[] arr, int k) {
+        
+        int res = 0;
+        int sum = 0;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        map.put(0, 1);
+        
+        for(int i = 0; i<arr.length; i++)
+        {
+            sum += arr[i];
+            
+            if(map.containsKey(sum-k))
+            {
+                res += map.get(sum-k);
+            }
+            map.put(sum, map.getOrDefault(sum,0)+1);
+        }
+        return res;
+    }
+}
