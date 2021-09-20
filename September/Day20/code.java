@@ -170,3 +170,38 @@ class kDiffInt{
         return count;        
     }
 }
+
+//Longest subarray with sum divisible by K 
+//https://practice.geeksforgeeks.org/problems/longest-subarray-with-sum-divisible-by-k1259/0/?track=md-hashing&batchId=144#
+
+class subArrayDivByK{
+    int longSubarrWthSumDivByK(int a[], int n, int k)
+    {
+        int res = 0;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        map.put(0,-1);
+        int sum = 0;
+        
+        for(int i = 0; i<n; i++)
+        {
+            sum += a[i];
+            int rem = sum%k;
+            
+            //the only difference cozzz -ve sum mein -5 aur 2 are similar for k = 7
+            if(rem < 0)
+            {
+                rem = rem + k;
+            }
+            
+            if(map.containsKey(rem))
+            {
+                res = Math.max(res, i-map.get(rem));
+            }
+            else{
+                map.put(rem, i);
+            }
+        }
+        return res;
+    }
+}
+ 
