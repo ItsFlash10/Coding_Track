@@ -50,3 +50,34 @@ class Solution {
         return true;
     }
 }
+
+
+//Is Sudoku Valid
+//https://practice.geeksforgeeks.org/problems/is-sudoku-valid4820/1/?track=md-hashing&batchId=144
+
+class sudokuValid{
+    static int isValid(int mat[][]){
+        
+        HashSet<String> set = new HashSet<>();
+        for(int row = 0; row<9; row++)
+        {
+            for(int column = 0; column<9; column++)
+            {
+                if(mat[row][column] != 0)
+                {
+                    //put string of row+rowNumber+ele; same for column
+                    if(!set.add("row"+row+mat[row][column]) || !set.add("column"+column+mat[row][column]))
+                    {
+                        return 0;
+                    }
+                    //put string of box+boxNumber+ele; box = (row/3)*3 + col/3
+                    if(!set.add("box"+(row/3)*3 + column/3 + mat[row][column]))
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
+        return 1;
+    }
+}
