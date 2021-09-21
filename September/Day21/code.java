@@ -81,3 +81,36 @@ class sudokuValid{
         return 1;
     }
 }
+
+//Anagram
+//https://practice.geeksforgeeks.org/problems/anagram-1587115620/1/?track=md-string&batchId=144
+
+class anagram
+{    
+    //Function is to check whether two strings are anagram of each other or not.
+    public static boolean isAnagram(String a,String b)
+    {
+        
+        HashMap<Character,Integer> map = new HashMap<>();
+        
+        for(int i = 0; i<a.length(); i++)
+        {
+            char ch = a.charAt(i);
+            map.put(ch,map.getOrDefault(ch,0)+1);
+        }
+        
+        for(int i = 0; i<b.length(); i++)
+        {
+            char ch = b.charAt(i);
+            map.put(ch,map.getOrDefault(ch,0)-1);
+        }
+        for (Map.Entry mapElement : map.entrySet()) {
+            if((int)mapElement.getValue()!= 0)
+            {
+                return false;
+            }
+        }
+        return true;
+        
+    }
+}
