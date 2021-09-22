@@ -62,3 +62,24 @@ class Solution{
         return reverseList(res.next);
     }
 }
+
+//Reverse a linked list
+//https://practice.geeksforgeeks.org/problems/reverse-a-linked-list/1/?track=md-linkedlist&batchId=144
+
+class revLL
+{
+    //Function to reverse a linked list.
+    Node reverseList(Node head)
+    {
+        Node newHead = null;
+        
+        while(head != null)
+        {
+            Node next = head.next;
+            head.next = newHead;
+            newHead = head;
+            head = next;
+        }
+        return newHead;  
+    }
+}
