@@ -24,6 +24,21 @@ class Solution {
     }
 }
 
+//Remove duplicate elements from sorted Array
+//https://practice.geeksforgeeks.org/problems/remove-duplicate-elements-from-sorted-array/1#
+
+class remDup{
+    int remove_duplicate(int A[],int N){
+    
+        int index = 1;
+        for(int i =0;i<N-1;i++){
+           if(A[i]!=A[i+1])
+            A[index++] = A[i+1];
+       }
+       return index;
+   }
+}
+
 //Smallest window in a string containing all the characters of another string 
 //https://practice.geeksforgeeks.org/problems/smallest-window-in-a-string-containing-all-the-characters-of-another-string-1587115621/1/?track=md-hashing&batchId=144#
 
