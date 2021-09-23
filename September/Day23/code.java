@@ -103,3 +103,41 @@ class middleEle
          return slow.data;
     }
 }
+
+//Merge two sorted linked lists
+//https://practice.geeksforgeeks.org/problems/merge-two-sorted-linked-lists/1/?track=md-linkedlist&batchId=144
+
+class LinkedList
+{
+    //Function to merge two sorted linked list.
+    Node sortedMerge(Node head1, Node head2) {
+        
+        if(head1 == null) return head2;
+        if(head2 == null) return head1;
+        
+        if(head1.data > head2.data)
+        {
+            Node temp = head1;
+            head1 = head2;
+            head2 = temp;
+        }
+        
+        Node res = head1;
+        while(head1 != null && head2 != null)
+        {
+            Node temp = null;
+            while(head1 != null && head1.data <= head2.data)
+            {
+                temp = head1;
+                head1 = head1.next;
+            }
+            temp.next = head2;
+            
+            //swap
+            Node tmp = head1;
+            head1 = head2;
+            head2 = tmp;
+        }
+        return res;
+   } 
+}
