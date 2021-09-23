@@ -104,8 +104,8 @@ class anagram
             char ch = b.charAt(i);
             map.put(ch,map.getOrDefault(ch,0)-1);
         }
-        for (Map.Entry mapElement : map.entrySet()) {
-            if((int)mapElement.getValue()!= 0)
+        for (Map.Entry<Character, Integer> mapElement : map.entrySet()) {     //<Character, Integer> added this to parameterize Map
+            if((int)mapElement.getValue()!= 0)                                //to fix an error
             {
                 return false;
             }
