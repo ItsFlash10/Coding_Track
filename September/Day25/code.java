@@ -24,6 +24,8 @@ class Ideone
 		int res = 0;
 		int minFreq = Integer.MAX_VALUE;
 		int maxFreq = 0;
+		int maxEle = 0;
+		int minEle = 0;
 		int flag = 0;
 		HashMap<Integer, Integer> map = new HashMap<>();
 		
@@ -45,12 +47,19 @@ class Ideone
 				flag += 1;
 			}
 		}
+		//this is how you get keys using values
+		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+			if(entry.getValue().equals(maxFreq))	
+				maxEle = entry.getKey();
+			if(entry.getValue().equals(minFreq))	
+				minEle = entry.getKey();
+    	}
 		
 		if(flag == 1)
 		{
 			return 0;
 		}
-		if(map.get(maxFreq) >= map.get(minFreq))
+		if(maxEle >= minEle)
 		{
 			res = maxFreq-minFreq;
 		}
