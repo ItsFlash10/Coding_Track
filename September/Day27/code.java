@@ -98,6 +98,26 @@ class Solution
 
 		if(n==sum) return true;      
 		else return false;   
-	}   
+	}
+
+	//if question was to check it for fibonacii
+	static boolean fibCheck(int n)
+	{
+		int firstTerm = 0;
+        int secondTerm = 1;
+        int thirdTerm = 0;
+		
+        while (thirdTerm < n)
+        {
+			thirdTerm = firstTerm + secondTerm;
+            firstTerm = secondTerm;
+            secondTerm = thirdTerm;
+        }
+		
+        if(thirdTerm == n){
+			return true;
+		}
+		return false;
+	}
 }
 
