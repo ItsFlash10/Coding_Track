@@ -36,3 +36,68 @@ class wiproSol
 		return res;
 	}
 }
+
+//Wipro Solution
+class Solution
+{
+	public static Scanner scn= new Scanner(System.in);
+	public static void main(String[] args) {
+		int n = scn.nextInt();
+
+		System.out.println(decode(n));
+	}
+	static int decode(int n)
+	{
+		int sum = 0;
+		if(armStCheck(n) == true)
+		{
+			while(n > 0)
+			{
+				int digit = n%10;
+				if((digit%2) == 0)
+				{
+					sum += digit;
+				}
+				n = n/10;
+			}
+		}
+		else
+		{
+			while(n > 0)
+			{
+				int digit = n%10;
+				if((digit%2) != 0)
+				{
+					sum += digit;
+				}
+				n = n/10;
+			}
+		}
+		return sum;
+	}
+	
+	static boolean armStCheck(int n)
+	{
+		int temp, digits=0, last=0, sum=0;   
+		temp=n;   
+
+		while(temp>0)    
+		{   
+			temp = temp/10;   
+			digits++;   
+		}
+
+		temp = n; 
+
+		while(temp>0)   
+		{   
+			last = temp % 10;
+			sum +=  (Math.pow(last, digits));   
+			temp = temp/10;   
+		}  
+
+		if(n==sum) return true;      
+		else return false;   
+	}   
+}
+
