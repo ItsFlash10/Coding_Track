@@ -121,3 +121,26 @@ class Solution
 	}
 }
 
+//Kadanes for ArrayList
+
+class Sol
+{ 
+    public static int maxSubArray(ArrayList<Integer> array)
+    {
+        int sum = 0;
+        int maxSum = Integer.MIN_VALUE;;
+        
+        for(int i = 0; i<array.size(); i++)
+        {
+            sum += array.get(i);
+            maxSum = Math.max(maxSum,sum);
+            
+            if(sum < 0)
+            {
+                sum = 0;
+            }
+        }
+        return maxSum;
+    }
+}
+
