@@ -217,3 +217,34 @@ class searchEleMat {
         return false;
     }
 }
+
+//Search in a matrix(GFG) //in this 1st ele is not greater than the last ele of previous row unlinke last Leetcode question
+//https://practice.geeksforgeeks.org/problems/search-in-a-matrix17201720/1
+
+class Sol
+{
+    public static int matSearch(int matrix[][], int N, int M, int x)
+    {
+        //put the pointer at top right as every ele to left will be smaller 
+        //and every ele down to it will be greater
+        int row = 0;
+        int col = M-1;
+        
+        while(row<N && col>=0)
+        {
+            if(matrix[row][col] == x)
+            {
+                return 1;
+            }
+            if(matrix[row][col] > x)
+            {
+                col--;
+            }
+            else
+            {
+                row++;
+            }
+        }
+        return 0;
+    }
+}
