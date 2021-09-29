@@ -182,3 +182,38 @@ class traverseSpiralMatrix
         return res;
     }
 }
+
+//74. Search a 2D Matrix
+//https://leetcode.com/problems/search-a-2d-matrix/
+
+class searchEleMat {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        
+        if(matrix.length == 0) return false;
+        
+        int low = 0;
+        int N = matrix.length;
+        int M = matrix[0].length;
+        int high = (M*N) - 1;
+        
+        while(low<=high)
+        {
+            int mid = low + (high-low)/2; //to prevent overflow
+            
+            //row = mid/col length && col = mid%col length
+            if(matrix[mid/M][mid%M] < target)
+            {
+                low = mid + 1;
+            }
+            else if(matrix[mid/M][mid%M] > target)
+            {
+                high = mid-1;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+}
