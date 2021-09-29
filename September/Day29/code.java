@@ -248,3 +248,27 @@ class Sol
         return 0;
     }
 }
+
+//NOTE: BINARY SEARCH can be used in any search space which is monotonic in nature 
+//i.e., strictly increasing or decreasing
+
+//Median in a row-wise sorted Matrix 
+//https://practice.geeksforgeeks.org/problems/median-in-a-row-wise-sorted-matrix1527/1
+class medianOfMat
+{
+    int median(int mat[][], int r, int c) 
+    {
+        
+        int[] arr = new int[r*c];
+        int k =0;
+        for(int i=0;i<r;i++)
+            for(int j=0;j<c;j++)
+            {
+                arr[k] = mat[i][j];
+                k++;
+            }
+        Arrays.sort(arr);
+        return arr[r*c/2];
+
+    }
+}
