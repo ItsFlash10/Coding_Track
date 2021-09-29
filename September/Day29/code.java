@@ -125,3 +125,60 @@ class Solution {
         return res;
     }
 }
+
+//Spirally traversing a matrix 
+//https://practice.geeksforgeeks.org/problems/spirally-traversing-a-matrix-1587115621/1#
+
+class traverseSpiralMatrix
+{
+    static ArrayList<Integer> spirallyTraverse(int matrix[][], int r, int c)
+    {
+        int top = 0;
+        int down = matrix.length-1;
+        int left = 0;
+        int right = matrix[0].length-1;
+        ArrayList<Integer> res = new ArrayList<>();
+        int dir = 0;  //important as this will tell what to do
+        
+        while(top <= down && left <= right)
+        {
+            if(dir == 0) //traverse from left to right
+            {
+                for(int i = left; i<=right; i++)
+                {
+                    res.add(matrix[top][i]);
+                }
+                top++;
+            }
+        
+            else if(dir == 1) //traverse from top to down
+            {
+                for(int i = top; i<=down; i++)
+                {
+                    res.add(matrix[i][right]);
+                }
+                right--;
+            }
+            
+            else if(dir == 2) //traverse from right to left
+            {
+                for(int i = right; i>=left; i--)
+                {
+                    res.add(matrix[down][i]);
+                }
+                down--;
+            }
+            
+            else if(dir == 3) //traverse from down to top
+            {
+                for(int i = down; i>=top; i--)
+                {
+                    res.add(matrix[i][left]);
+                }
+                left++;
+            }
+            dir = (dir+1)%4; //changing direction
+        }
+        return res;
+    }
+}
