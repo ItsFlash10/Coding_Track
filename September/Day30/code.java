@@ -210,3 +210,55 @@ class GFG
         }
     }
 }
+
+//Row with max 1s 
+//https://practice.geeksforgeeks.org/problems/row-with-max-1s0023/0/?track=md-matrix&batchId=144#
+
+class maxOnesRow{
+    int rowWithMax1s(int arr[][], int n, int m) {
+        
+        int maxOnes = 0;
+        int res = 0;
+        int flag = 0;
+        
+        //using binary serach in every row to get first idx of 1
+        //as rest all the col will be 1 after that idx
+        for(int row = 0; row<n; row++)
+        {
+            int count = countOfOnes(arr, row, m);
+            
+            if(count > maxOnes)
+            {
+                maxOnes = count;
+                res = row;
+                flag = 1;
+            }
+        }
+        return flag == 1 ? res : -1;
+    }
+    
+    int countOfOnes(int[][] arr, int row, int m)
+    {
+        int high = m-1;
+        int low = 0;
+        int firstIdx = m; //as this will make cal easy for no 1's in a row
+        
+        while(low <= high)
+        {
+            int mid = high + low >> 1;
+            
+            if(arr[row][mid] == 1)
+            {
+                firstIdx = mid;
+                high = mid - 1;
+            }
+            else
+            {
+                low = mid + 1;
+            }
+        }
+        int onesCount = m - firstIdx;
+        
+        return onesCount;
+    }
+}
