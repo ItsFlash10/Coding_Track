@@ -262,3 +262,23 @@ class maxOnesRow{
         return onesCount;
     }
 }
+
+//Longest Common Prefix in an Array
+//https://practice.geeksforgeeks.org/problems/longest-common-prefix-in-an-array5129/1/?track=md-string&batchId=144
+
+class lngstCmnSubString{
+    String longestCommonPrefix(String arr[], int n){
+        if(arr.length == 0) return "-1";
+        
+        String prefix = arr[0];
+        
+        for(int i = 1; i<arr.length; i++)
+        {
+            while(arr[i].indexOf(prefix) != 0) //indexOf is a mthod to check index of a string to another string
+            {
+                prefix = prefix.substring(0, prefix.length()-1); //endIdx is exclusive in .substring method
+            }
+        }
+        return prefix.length() == 0 ? "-1" : prefix;
+    }
+}
