@@ -58,7 +58,7 @@ class Solution {
 //Boolean Matrix
 //https://practice.geeksforgeeks.org/problems/boolean-matrix-problem-1587115620/1/?track=md-matrix&batchId=144#
 
-class Solution
+class boolMat
 {
     void booleanMatrix(int matrix[][])
     {
@@ -170,3 +170,43 @@ class Solution
 //         }
 //     }
 // }
+
+//Rotate by 90 degree
+//https://practice.geeksforgeeks.org/problems/rotate-by-90-degree0356/0/?track=md-matrix&batchId=144
+
+class GFG
+{
+    static void rotate(int matrix[][]) 
+    {
+        //transpose of a matrix => row becomes column
+        for(int row = 0; row<matrix.length; row++)
+        {
+            //so that swap happened only once col = row
+            //else every ele will we swapped twice and be back to original
+            for(int col = row; col<matrix[0].length; col++)
+            {
+                int temp = matrix[row][col];
+                matrix[row][col] = matrix[col][row];
+                matrix[col][row] = temp;
+            }
+            
+        }
+        
+        //reverse the matrix as to swap first row to last row
+        for(int i = 0; i<matrix.length; i++)
+        {
+            int topIdx = 0;
+            int downIdx = matrix.length-1;
+            
+            while(topIdx < downIdx)
+            {
+                int temp = matrix[topIdx][i];
+                matrix[topIdx][i] = matrix[downIdx][i];
+                matrix[downIdx][i] = temp;
+                
+                topIdx++;
+                downIdx--;
+            }
+        }
+    }
+}
