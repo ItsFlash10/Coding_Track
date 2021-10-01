@@ -26,3 +26,28 @@ class LCS{
        return  stringLength(text1, text2, m, n);       
     }
 }
+
+
+//Delete without head pointer 
+//https://practice.geeksforgeeks.org/problems/delete-without-head-pointer/1/?track=md-linkedlist&batchId=144
+
+class Node
+{
+	int data ;
+	Node next;
+	Node(int d)
+	{
+		data = d;
+		next = null;
+	}
+}
+
+//Function to delete a node without any reference to head pointer.
+class delNode
+{
+    void deleteNode(Node del)
+    {
+         del.data = del.next.data; //copy next element to the node to be delted 
+         del.next = del.next.next; //point the node next to the element next to the node to be delted
+    }                              // 2->3->4  ==>  2->4  when 3 is to be deleted
+}
