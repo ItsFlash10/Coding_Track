@@ -51,3 +51,30 @@ class delNode
          del.next = del.next.next; //point the node next to the element next to the node to be delted
     }                              // 2->3->4  ==>  2->4  when 3 is to be deleted
 }
+
+//https://practice.geeksforgeeks.org/problems/pairwise-swap-of-nodes-in-linkelist/1/?track=md-linkedlist&batchId=144
+//Pairwise swap of nodes in LinkeList
+//24. Swap Nodes in Pairs
+//https://leetcode.com/problems/swap-nodes-in-pairs/submissions/
+
+class Swap
+{
+    //Function to swap elements pairwise.
+    public static Node pairwise_swap(Node node)
+    {
+        Node temp = new Node(0);
+        temp.next = node;
+        Node curr = temp;
+        
+        while(curr.next != null && curr.next.next != null)
+        {
+            Node firstNode = curr.next;
+            Node secondNode = curr.next.next;
+            firstNode.next = secondNode.next;
+            curr.next = secondNode;
+            curr.next.next = firstNode;
+            curr = curr.next.next;
+        }
+        return temp.next;
+    }   
+}
