@@ -116,3 +116,78 @@ class maximProfit {
         return profit;
     }
 }
+
+//Nth node from end of linked list
+//https://practice.geeksforgeeks.org/problems/nth-node-from-end-of-linked-list/1/?track=md-linkedlist&batchId=144#
+
+//Structure of node
+class Node
+{
+    int data;
+    Node next;
+    Node(int d) {data = d; next = null; }
+}
+
+class GfG
+{
+    int getNthFromLast(Node head, int n)
+    {
+        //Optimised
+        Node slow = head;
+        Node fast = head;
+        int temp = n;
+        
+        while(temp > 0) //move the fast pointer to nth index 
+        {
+            if(fast == null) return -1;
+            fast = fast.next;
+            temp--;
+        }
+        
+        while(fast != null)
+        {
+            fast = fast.next;
+            slow = slow.next;
+        }
+        return slow.data;
+        
+        
+        //BETTER
+        // Node temp = head;
+        // int count = 1;
+        // while(temp!=null)
+        // {
+        //     temp = temp.next;
+        //     count++;
+        // }
+        // System.out.print("count:" + count);
+        
+        // Node ans = head;
+        // int idx = count - n;
+        // // System.out.print("Index:" + idx);
+        // // if(idx < 0) return -1;
+        // count = 1;
+        // while(ans != null)
+        // {
+        //     if(count == idx)
+        //     {
+        //         return ans.data;
+        //     }
+        //     ans = ans.next;
+        //     count++;
+        // }
+        // return -1;
+        
+        
+    //Brute Force || can even reverse the linked list
+    // 	ArrayList<Integer> temp = new ArrayList<>();
+    	
+    // 	while(head != null)
+    // 	{
+    // 	    temp.add(head.data);
+    // 	    head = head.next;
+    // 	}
+    	
+    // 	return temp.size() - n < 0 ? -1 : temp.get(temp.size() - n);
+    }
+}
