@@ -191,3 +191,39 @@ class GfG
     // 	return temp.size() - n < 0 ? -1 : temp.get(temp.size() - n);
     }
 }
+
+//Rearrange a linked list
+//https://practice.geeksforgeeks.org/problems/rearrange-a-linked-list/1/?track=md-linkedlist&batchId=144#
+
+class rearrange
+{
+    void rearrangeEvenOdd(Node head)
+    {
+         Node tail=head;
+         int c=1;
+         while(tail.next!=null)
+         {
+             tail=tail.next;
+             c++;
+         }
+         if(c>1)
+         {
+             Node temp=head;
+             Node run=head.next;
+             Node hold=head.next;
+             while(run.next!=null && temp.next!=null)
+             {
+                 temp.next=run.next;
+                 temp=run.next;
+                 if(temp.next!=null)
+                 {
+                     run.next=temp.next;
+                     run=temp.next;
+                 }
+             }
+             run.next=null;
+             temp.next=hold;
+         }
+         
+     }
+}
