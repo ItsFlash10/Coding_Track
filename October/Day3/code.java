@@ -79,3 +79,55 @@ class pascalsTriangle {
         return res;
     }
 }
+
+//Detect Loop in linked list
+//https://practice.geeksforgeeks.org/problems/detect-loop-in-linked-list/1/?track=md-linkedlist&batchId=144
+
+//Node is defined as
+class Node
+{
+    int data;
+    Node next;
+    Node(int d) {data = d; next = null; }
+}
+
+class loopcheck{
+    public static boolean detectLoop(Node head){
+        
+        //Optimised
+        Node slow = head;
+        Node fast = head;
+        
+        while(fast.next != null && fast.next.next != null)
+        {
+            fast = fast.next.next;
+            slow = slow.next;
+            
+            if(fast == slow)
+            {
+                return true;
+            }
+        }
+        return false;
+        
+        
+        // //Brute Force
+        // HashSet<Node> set = new HashSet<>();
+        
+        // Node dummy = new Node(0);
+        // dummy.next = head;
+        // while(dummy!=null)
+        // {
+        //     if(!set.contains(dummy))
+        //     {
+        //         set.add(dummy);
+        //     }
+        //     else
+        //     {
+        //         return true;
+        //     }
+        //     dummy = dummy.next;
+        // }
+        // return false;
+    }
+}
