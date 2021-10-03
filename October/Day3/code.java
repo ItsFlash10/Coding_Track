@@ -94,7 +94,8 @@ class Node
 class loopcheck{
     public static boolean detectLoop(Node head){
         
-        //Optimised
+        //Optimised  //intution: nodeA(fast) -> nodeB (slow) 
+        //[Take any positions, the pointers will ulitmately come as mentioned after certain iteration] 
         Node slow = head;
         Node fast = head;
         
@@ -129,5 +130,54 @@ class loopcheck{
         //     dummy = dummy.next;
         // }
         // return false;
+    }
+}
+
+//Remove loop in Linked List
+//https://practice.geeksforgeeks.org/problems/remove-loop-in-linked-list/1/?track=md-linkedlist&batchId=144
+
+class rmv
+{
+    //Function to remove a loop in the linked list.
+    public static void removeLoop(Node node){
+        
+        if (node == null || node.next == null)
+            return;
+
+        Node slow = node, fast = node;
+
+        slow = slow.next;
+        fast = fast.next.next;
+
+        while (fast != null && fast.next != null) 
+        {
+            if (slow == fast)
+                break;
+
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        if (slow == fast) 
+        {
+            slow = node;
+            if (slow != fast) 
+            {
+                while (slow.next != fast.next) 
+                {
+                    slow = slow.next;
+                    fast = fast.next;
+                }
+                fast.next = null; 
+            }
+            else 
+            {
+                while(fast.next != slow) 
+                {
+                    fast = fast.next;
+                }
+                fast.next = null;
+            }
+        }
     }
 }
