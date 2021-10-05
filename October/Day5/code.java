@@ -54,3 +54,42 @@ class validAnagram {
         return true;  
     }
 }
+
+//383. Ransom Note
+//https://leetcode.com/problems/ransom-note/
+
+class ranNote{
+    public boolean canConstruct(String ransomNote, String magazine) {
+        
+        HashMap<Character, Integer> map = new HashMap<>();
+        int count = 0;
+        for(int i = 0; i < ransomNote.length(); i++)
+        {
+            char ch = ransomNote.charAt(i);
+            if(!map.containsKey(ch))
+            {
+                map.put(ch, map.getOrDefault(ch,0)+1);
+                count++;
+            }
+            else
+            {
+                map.put(ch, map.get(ch)+1);                
+            }
+        }
+        
+        for(int i = 0; i < magazine.length(); i++)
+        {
+            char ch = magazine.charAt(i);
+            if(map.containsKey(ch))
+            {
+                map.put(ch, map.getOrDefault(ch,0)-1);
+                
+                if(map.get(ch) == 0)
+                {
+                    count--;
+                }
+            }
+        }
+        return count == 0 ? true : false;  
+    }
+}
