@@ -113,3 +113,46 @@ class waysToClimb {
         return dp[n];
     }
 }
+
+//Rotate a Linked List
+//https://practice.geeksforgeeks.org/problems/rotate-a-linked-list/1/?track=md-linkedlist&batchId=144
+
+//Node of linked list:
+class Node{
+    int data;
+    Node next;
+    Node(int d){
+        data=d;
+        next=null;
+    }
+}
+
+class rotation{
+    //Function to rotate a linked list.
+    public Node rotate(Node head, int k) {
+        
+        if(head == null || head.next == null || k == 0) return head;
+        
+        int len = 1;
+        Node temp = head;
+        
+        while(temp.next != null)
+        {
+            len++;
+            temp = temp.next;
+        }
+        
+        k = k % len;
+        
+        //join the tail to head to make it a circular LL
+        temp.next = head;
+        //bring the node to the kth posi from where it has to be rotated
+        while(k-- > 0) temp = temp.next;
+        //assign head to the node next the curr node
+        head = temp.next;
+        //point the curr(kth) node to null
+        temp.next = null;
+        
+        return head;
+    }
+}
