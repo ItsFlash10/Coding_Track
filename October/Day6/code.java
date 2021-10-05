@@ -65,3 +65,43 @@ class findPosi{
         return res;
     }
 }
+
+//31. Next Permutation
+//https://leetcode.com/problems/next-permutation/submissions/
+
+class nxtPer {
+    public void nextPermutation(int[] nums) {
+        
+        if(nums.length <= 1 || nums == null) return;
+        
+        int right = nums.length - 2;
+        
+        while(right >= 0  && nums[right] >= nums[right + 1]) right--;
+        if(right >= 0)
+        {
+            int j = nums.length-1;
+                
+            while(nums[j] <= nums[right]) j--;
+            swap(nums, right, j);
+        }
+        
+        reverse(nums, right+1, nums.length-1);
+        
+    }
+    
+    static void swap(int[] arr, int a, int b)
+    {
+        int temp = arr[a];
+        arr[a] = arr[b];
+        arr[b] = temp;
+    }
+    
+    static void reverse(int[] arr, int i, int j)
+    {
+        while(i < j)
+        {
+            swap(arr, i++, j--);            
+        }
+    }
+    
+}
