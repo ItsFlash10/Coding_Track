@@ -33,3 +33,35 @@ class BSImpli{
         return false;
     }
 }
+
+//35. Search Insert Position
+//https://leetcode.com/problems/search-insert-position/
+
+class findPosi{
+    public int searchInsert(int[] nums, int target) {
+        
+        int left = 0;
+        int right = nums.length-1;
+        int res = nums.length; //to take care of boundary case
+        
+        // if(target<nums[left])return left;
+        // if(target>nums[right])return right+1;
+        
+        while(left <= right)
+        {
+            int mid = left + (right-left)/2;
+            
+            if(nums[mid] < target) left = mid + 1;
+            else if(nums[mid] > target)
+            {
+                right = mid - 1; 
+                res = mid; 
+            }
+            else
+            {
+                return mid;   
+            }
+        }
+        return res;
+    }
+}
