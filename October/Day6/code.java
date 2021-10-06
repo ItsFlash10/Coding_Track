@@ -113,26 +113,21 @@ class nxtPer {
 class dupWithoutExtraSpace{
     public List<Integer> findDuplicates(int[] nums) {
         
-        //optimised
-        List<Integer> res = new ArrayList<>();
-        
-        if (nums == null || nums.length == 0) {
-            return res;
-        }
-        int n = nums.length;
-        boolean[] visit = new boolean[n+1]; //since elem can appear at max twice
+        //optimised[but will work for this particaular question][Nick White Method]
+        ArrayList<Integer> res = new ArrayList<>();
         
         for(int i = 0; i<nums.length; i++)
         {
-            if(visit[nums[i]])
-            {
-                res.add(nums[i]);
-            }
-            visit[nums[i]] = true;
+            int idx = Math.abs(nums[i]) - 1; //since 1<=nums[i]<n we can manipulate idx and take it as a reference
+            
+            if(nums[idx] < 0) res.add(idx + 1); //if the val at a particular idx is -ve means we have visited it once
+            
+            nums[idx] = -nums[idx]; //after visiting just make the value negative
         }
         return res;
+    
         
-//         //extra space
+//         //better
 //         ArrayList<Integer> res = new ArrayList<>();
 //         HashSet<Integer> set = new HashSet<>();
         
@@ -147,6 +142,26 @@ class dupWithoutExtraSpace{
 //                 set.add(nums[i]);
 //             }
 //         }
-//         return res;        
+//         return res;
+        
+//        //same with boolean array
+//         List<Integer> res = new ArrayList<>();
+        
+//         if (nums == null || nums.length == 0) {
+//             return res;
+//         }
+//         int n = nums.length;
+//         boolean[] visit = new boolean[n+1]; //since elem can appear at max twice
+        
+//         for(int i = 0; i<nums.length; i++)
+//         {
+//             if(visit[nums[i]])
+//             {
+//                 res.add(nums[i]);
+//             }
+//             visit[nums[i]] = true;
+//         }
+//         return res;
+        
     }
 }
