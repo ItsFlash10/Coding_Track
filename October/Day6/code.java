@@ -307,3 +307,28 @@ class mergeSortedLL{
         return res;
     }
 }
+
+//203. Remove Linked List Elements
+//https://leetcode.com/problems/remove-linked-list-elements/submissions/
+
+class removeEleLL{
+    public ListNode removeElements(ListNode head, int val) {
+        
+        ListNode res = head;
+        
+        if(head == null) return head;
+        
+        while(head.next != null)
+        {
+            if(head.next.val == val)
+            {
+                head.next = head.next.next;                
+            }
+            else
+            {
+                head = head.next;
+            }
+        }        
+        return res.val == val ? res.next : res;
+    }
+}
