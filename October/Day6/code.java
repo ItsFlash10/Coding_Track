@@ -165,3 +165,47 @@ class dupWithoutExtraSpace{
         
     }
 }
+
+//977. Squares of a Sorted Array
+//https://leetcode.com/problems/squares-of-a-sorted-array/submissions/
+
+class sortSquareArray {
+    public int[] sortedSquares(int[] nums) {
+        
+        //(O(n))
+        int[] res = new int[nums.length];
+        int n = nums.length;
+        int idx = n-1;
+        int left = 0;
+        int right = n-1;
+        
+        while(left <= right)
+        {
+            if(Math.abs(nums[left]) >= nums[right])
+            {
+                res[idx--] = nums[left] * nums[left];
+                left++;
+            }
+            else
+            {
+                res[idx--] = nums[right] * nums[right];
+                right--;
+            }    
+        }
+        return res;
+        
+        
+//         //O(n logn)
+//         int[] res = new int[nums.length];
+//         int idx = 0;
+        
+//         for(int i = 0; i<nums.length; i++)
+//         {
+//             res[idx++] = nums[i]*nums[i];
+//         }
+//         Arrays.sort(res);
+        
+//         return res;
+        
+    }
+}
