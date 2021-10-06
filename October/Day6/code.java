@@ -1,4 +1,5 @@
 package Day6;
+import java.util.*;
 
 //278. First Bad Version
 //https://leetcode.com/problems/first-bad-version/
@@ -104,4 +105,48 @@ class nxtPer {
         }
     }
     
+}
+
+//442. Find All Duplicates in an Array
+//https://leetcode.com/problems/find-all-duplicates-in-an-array/
+
+class dupWithoutExtraSpace{
+    public List<Integer> findDuplicates(int[] nums) {
+        
+        //optimised
+        List<Integer> res = new ArrayList<>();
+        
+        if (nums == null || nums.length == 0) {
+            return res;
+        }
+        int n = nums.length;
+        boolean[] visit = new boolean[n+1]; //since elem can appear at max twice
+        
+        for(int i = 0; i<nums.length; i++)
+        {
+            if(visit[nums[i]])
+            {
+                res.add(nums[i]);
+            }
+            visit[nums[i]] = true;
+        }
+        return res;
+        
+//         //extra space
+//         ArrayList<Integer> res = new ArrayList<>();
+//         HashSet<Integer> set = new HashSet<>();
+        
+//         for(int i = 0; i < nums.length; i++)
+//         {
+//             if(set.contains(nums[i]))
+//             {
+//                 res.add(nums[i]);
+//             }
+//             else
+//             {
+//                 set.add(nums[i]);
+//             }
+//         }
+//         return res;        
+    }
 }
