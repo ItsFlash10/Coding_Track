@@ -1,5 +1,5 @@
 package Day7;
-
+import java.util.*;
 
 //Partition a Linked List around a given value
 //https://practice.geeksforgeeks.org/problems/partition-a-linked-list-around-a-given-value/1/?track=md-linkedlist&batchId=144#
@@ -59,5 +59,58 @@ class Solution {
         after.next = null;
         
         return beforeHead.next;
+    }
+}
+
+//13. Roman to Integer
+//https://leetcode.com/problems/roman-to-integer/
+
+class romToInt{
+    public int romanToInt(String s) {
+        
+        int res  = 0;
+        
+        HashMap<Character, Integer> map = new HashMap<>();
+        
+        map.put('I', 1);
+        map.put('V', 5);
+        map.put('X', 10);
+        map.put('L', 50);
+        map.put('C', 100);
+        map.put('D', 500);
+        map.put('M', 1000);
+        
+        for(int i = 0; i<s.length(); i++)
+        {
+            char ch = s.charAt(i);
+            
+            if(ch == 'V' || ch =='X')
+            {
+                if(i > 0 && s.charAt(i-1) == 'I')
+                {
+                    res -= 2;
+                }
+            }
+            
+            if(ch == 'L' || ch =='C')
+            {
+                if(i > 0 && s.charAt(i-1) == 'X')
+                {
+                    res -= 20;
+                }
+            }
+            
+            if(ch == 'D' || ch =='M')
+            {
+                if(i > 0 && s.charAt(i-1) == 'C')
+                {
+                    res -= 200;
+                }
+            }
+            
+            res += map.get(ch);
+        }
+        return res;
+        
     }
 }
