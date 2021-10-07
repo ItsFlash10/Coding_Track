@@ -24,3 +24,36 @@ class mvzro{
         return;        
     }
 }
+
+//167. Two Sum II - Input array is sorted
+//https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
+
+class idxSum{
+    public int[] twoSum(int[] nums, int target) {
+        
+        int i = 0;
+        int j = nums.length-1;
+        int[] res = new int[2];
+        
+        while(i < j)
+        {
+            int sum = nums[i] + nums[j];
+            
+            if(sum > target)
+            {
+                j--;
+            }
+            else if(sum < target)
+            {
+                i++;
+            }
+            else
+            {
+                res[0] = i+1;
+                res[1] = j+1;
+                break;
+            }
+        }
+        return res;           
+    }
+}
