@@ -28,3 +28,17 @@ class validParth{
         return st.empty();
     }
 }
+
+//201. Bitwise AND of Numbers Range
+//https://leetcode.com/problems/bitwise-and-of-numbers-range/
+
+class bitwise{
+    public int rangeBitwiseAnd(int left, int right) {
+        
+        int i = 0;
+        for(; i<32; i ++)
+            if(left>>i == right >>i)
+                break;
+        return left>>i << i;
+    }
+}
