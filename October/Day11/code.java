@@ -43,3 +43,68 @@ class MyQueue {
         return false;
     }
 }
+
+//Next Permutation
+//https://practice.geeksforgeeks.org/problems/next-permutation5226/1
+
+class nextPerm{
+    static List<Integer> nextPermutation(int N, int arr[]){
+        
+        ArrayList<Integer> res = new ArrayList<>();
+        int pivotIdx = findPivot(arr) - 1;
+        if(pivotIdx != -1)
+        {
+            int nextGreaterEleIdx = idxOfNxtGrEle(arr, arr[pivotIdx]);
+            swap(arr, pivotIdx, nextGreaterEleIdx);
+        }
+        reverse(arr, pivotIdx+1);
+        
+        for(int i = 0; i < arr.length; i++)
+        {
+            res.add(arr[i]);
+        }
+        return res;
+        
+    }
+    
+    static int idxOfNxtGrEle(int[] arr, int n)
+    {
+        for(int i = arr.length-1; i>=0; i--)
+        {
+            if(arr[i] > n)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    static int findPivot(int[] arr)
+    {
+        for(int i = arr.length-1; i > 0; i--)
+        {
+            if(arr[i] > arr[i-1])
+            {
+                return i;
+            }
+        }
+        return 0;
+    }
+    
+    static void swap(int[] arr, int a, int b)
+    {
+        int temp = arr[a];
+        arr[a] = arr[b];
+        arr[b] = temp;
+    }
+    
+    static void reverse(int[] arr, int start)
+    {
+        int end = arr.length - 1;
+        
+        while(start < end)
+        {
+            swap(arr, start++, end--);
+        }
+    }
+}
