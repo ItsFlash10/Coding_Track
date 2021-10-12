@@ -89,3 +89,41 @@ class stringPermutation{
         return false;  
     }
 }
+
+//Intersection Point in Y Shapped Linked Lists 
+//https://practice.geeksforgeeks.org/problems/intersection-point-in-y-shapped-linked-lists/1/?track=md-linkedlist&batchId=144
+
+//Node of a linked list
+ class Node{
+   int data;
+    Node next;
+    Node(int d)  { data = d;  next = null; }
+}
+//Linked List class
+class LinkedList
+{
+    Node head;  // head of list
+}
+
+class Intersect
+{
+    //Function to find intersection point in Y shaped Linked Lists.
+	int intersectPoint(Node head1, Node head2)
+	{
+	    if(head1 == null || head2 == null) return -1;
+	    
+	    Node dummy1 = head1;
+	    Node dummy2 = head2;
+	    
+	    while(dummy1 != dummy2)
+	    {
+	       // dummy1 = dummy1==null ? head2 : dummy.next;
+	        if(dummy1 == null) dummy1 = head2;
+	        else dummy1 = dummy1.next;
+	        
+	        if(dummy2 == null) dummy2 = head1;
+	        else dummy2 = dummy2.next;
+	    }
+	    return dummy1.data;
+	}
+}
