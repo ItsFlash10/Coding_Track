@@ -10,12 +10,14 @@ class Node
 	int data;
 	Node next;
 	Node bottom;
+    Node arb;
 	
 	Node(int d)
 	{
 		data = d;
 		next = null;
 		bottom = null;
+        arb = null;
 	}
 }
 
@@ -170,3 +172,56 @@ class revKGrp{
         return dummy.next;
     }
 }
+
+//Clone a linked list with next and random pointer 
+//https://practice.geeksforgeeks.org/problems/clone-a-linked-list-with-next-and-random-pointer/0/?track=md-linkedlist&batchId=144
+
+class Clone {
+    //Function to clone a linked list with next and random pointer.
+    Node copyList(Node head) {
+        
+        //step 1: making new copies
+        Node iter = head;
+        Node front = head;
+        
+        while(iter != null)
+        {
+            front = iter.next;
+            
+            Node copy = new Node(iter.data);
+            iter.next = copy;
+            copy.next = front;
+            
+            iter = front;
+        }
+        
+        //step2: point next random pointer
+        iter = head;
+        while(iter != null)
+        {
+            if(iter.arb != null)
+            {
+                iter.next.arb = iter.arb.next;
+            }
+            iter = iter.next.next;
+        }
+        
+        //step 3: bifercate the copy list
+        iter = head;
+        Node pseudoHead = new Node(0);
+        Node res = pseudoHead;
+        
+        while(iter != null)
+        {
+            front = iter.next.next;
+            //extract the copy
+            res.next = iter.next;
+            res = res.next;
+            //restore the original
+            iter.next = front;
+            iter = front;
+        }
+        return pseudoHead.next;
+    }
+}
+
