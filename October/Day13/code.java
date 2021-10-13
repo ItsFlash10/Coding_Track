@@ -157,7 +157,7 @@ class revKGrp{
             curr = prev.next;
             nex = curr.next;
                 
-            for(int i = 1; i<k; i++)
+            for(int i = 1; i<k; i++) //[&& curr.next != null] to perform reverse when count < k also make while(k >0)
             {
                 curr.next = nex.next;
                 nex.next = prev.next;
