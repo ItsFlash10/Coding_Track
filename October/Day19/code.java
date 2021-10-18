@@ -204,3 +204,32 @@ class rottenOranges {
         DFSOranges(grid, i, j-1, rows, cols, mins + 1);
     }   
 }
+
+//77. Combinations
+//https://leetcode.com/problems/combinations/
+
+class generateSubS{
+    public List<List<Integer>> combine(int n, int k) {
+        
+        List<List<Integer>> subsets = new ArrayList<>();
+        
+        genSubsets(subsets, new ArrayList<Integer>(), 1, n, k);
+        return subsets;
+    }
+    
+    void genSubsets(List<List<Integer>> subsets, ArrayList<Integer>current , int start, int n, int k)
+    {
+        if(k==0) 
+        {
+			subsets.add(new ArrayList<Integer>(current));
+			return;
+		}
+        
+		for(int i=start;i<=n;i++) 
+        {
+			current.add(i);
+			genSubsets(subsets, current, i+1, n, k-1);
+			current.remove(current.size()-1);
+        }
+    }
+}
