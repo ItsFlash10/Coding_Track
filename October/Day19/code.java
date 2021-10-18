@@ -33,3 +33,20 @@ class revBits{
         return rev;
     }
 }
+
+//136. Single Number
+//https://leetcode.com/problems/single-number/submissions/
+
+class XORforDuplicate{
+    public int singleNumber(int[] nums) {
+        
+        int res = 0;
+        
+        for(int ele : nums)
+        {
+            res = res^ele;
+        }
+        
+        return res;        
+    }
+}
