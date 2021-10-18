@@ -207,3 +207,15 @@ class stairWays{
         return dp[n];
     }
 }
+
+//231. Power of Two
+//https://leetcode.com/problems/power-of-two/
+
+class pwrOfTwo {
+    public boolean isPowerOfTwo(int n) {
+        
+        if((n & (n-1)) == 0 && n > 0) return true; // 2: 100   4: 10000  [n: 8: 100000000 so n-1: 011111111 so BITWISE AND:000000000]
+                                                   //@Sumeet Sir
+        return false;
+    }
+}
