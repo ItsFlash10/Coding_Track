@@ -124,3 +124,48 @@ class Solution {
         return false;      
     }         
 }
+
+//695. Max Area of Island
+//https://leetcode.com/problems/max-area-of-island/
+
+class areaOfIsland {
+    public int maxAreaOfIsland(int[][] grid) {
+        
+        int rows = grid.length;
+        int cols = grid[0].length;
+        
+        int maxArea = 0;
+        
+        for(int i = 0; i<rows; i++)
+        {
+            for(int j = 0; j<cols; j++)
+            {
+                if(grid[i][j] == 1)
+                {
+                    maxArea = Math.max(maxArea, markIslandBound(grid, i, j, rows, cols));
+                }
+            }
+        }
+        return maxArea;
+    }
+    
+    int markIslandBound(int[][] grid, int i, int j, int rows, int cols)
+    {
+        if(i >= rows || i < 0 || j < 0 || j >= cols || grid[i][j] != 1) return 0;
+        
+        grid[i][j] = 0; //mark as visited by sinking it ,i.e., marking it 0
+        
+        int count = 1;
+        
+        //top
+        count += markIslandBound(grid, i-1, j, rows, cols);        
+        //right
+        count += markIslandBound(grid, i, j+1, rows, cols);
+        //down
+        count += markIslandBound(grid, i+1, j, rows, cols);
+        //left
+        count += markIslandBound(grid, i, j-1, rows, cols);
+        
+        return count;
+    }
+}
