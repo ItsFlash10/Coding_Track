@@ -155,3 +155,52 @@ class sol{
         return mat;        
     }
 }
+
+//994. Rotting Oranges
+//https://leetcode.com/problems/rotting-oranges/submissions/
+
+class rottenOranges {
+    public int orangesRotting(int[][] grid) {
+        
+        if(grid == null || grid.length == 0) return -1;
+        
+        int rows = grid.length;
+        int cols = grid[0].length;
+        for(int i = 0; i<rows; i++)
+        {
+            for(int j = 0; j<cols; j++)
+            {
+                if(grid[i][j] == 2)
+                {
+                    DFSOranges(grid, i, j, rows, cols, 2);
+                }
+            }
+        }
+        int minutes = 2;
+        
+        for(int[] ro : grid)
+        {
+            for(int cell : ro)
+            {
+                if(cell == 1) return -1;
+                
+                minutes = Math.max(minutes, cell);
+            }
+        }
+        
+        
+        return minutes - 2;
+    }
+    
+    void DFSOranges(int[][] grid, int i, int j, int rows, int cols, int mins)
+    {
+        if(i<0 || j<0 || i>= rows || j>=cols || (1 < grid[i][j] && grid[i][j] < mins) || grid[i][j] == 0) return;
+        
+        grid[i][j] = mins;
+        
+        DFSOranges(grid, i+1, j, rows, cols, mins + 1);
+        DFSOranges(grid, i-1, j, rows, cols, mins + 1);
+        DFSOranges(grid, i, j+1, rows, cols, mins + 1);
+        DFSOranges(grid, i, j-1, rows, cols, mins + 1);
+    }   
+}
