@@ -255,3 +255,31 @@ class houseRobber {
         return dp[nums.length];
     }
 }
+
+//496. Next Greater Element I
+//https://leetcode.com/problems/next-greater-element-i/submissions/
+
+class NGRinDifffArray {
+    public int[] nextGreaterElement(int[] nums1, int[] nums2) {
+        
+        int[] res = new int[nums1.length];
+        int idx = 0;
+        Stack<Integer> st = new Stack<>();
+        HashMap<Integer, Integer> map = new HashMap<>();
+        
+        for(int num : nums2)
+        {
+            while(!st.isEmpty() && st.peek() < num)
+            {
+                map.put(st.pop(), num); // MAP: (Num, its NGR)
+            }
+            st.push(num);
+        }
+        
+        for(int num : nums1)
+        {
+            res[idx++] = map.getOrDefault(num, -1);            
+        }
+        return res;
+    }
+}
