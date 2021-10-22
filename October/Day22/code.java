@@ -116,3 +116,22 @@ class paritySort {
         return nums;        
     }
 }
+
+//27. Remove Element
+//https://leetcode.com/problems/remove-element/
+
+class eleRemoval {
+    public int removeElement(int[] nums, int val) {
+        
+        int j = 0;
+        
+        for(int i = 0; i<nums.length; i++)
+        {
+            if(nums[i] != val)
+            {
+                nums[j++] = nums[i];                
+            }
+        }
+        return j;
+    }
+}
