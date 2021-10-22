@@ -67,3 +67,52 @@ class freqSort {
         return res;     
     }
 }
+
+//119. Pascal's Triangle II
+//https://leetcode.com/problems/pascals-triangle-ii/
+
+class rowPascal{
+    public List<Integer> getRow(int rowIndex) 
+    {
+        ArrayList<Integer> res = new ArrayList<>();
+        
+        for(int i = 0; i<=rowIndex; i++)
+        {
+            res.add(nCr(rowIndex,i));
+        }
+        return res;
+    }
+    
+    int nCr(int n, int r)
+    {
+        long res = 1;
+        r = Math.min(r, n-r);
+        
+        for(int i = 1; i<=r; i++)
+        {
+            res = (res*(n-i+1))/i;
+        }
+        return (int)res;
+    }
+}
+
+//905. Sort Array By Parity
+//https://leetcode.com/problems/sort-array-by-parity/
+
+class paritySort {
+    public int[] sortArrayByParity(int[] nums) {
+
+        int left = 0;
+        
+        for(int i = 0; i<nums.length; i++)
+        {
+            if((nums[i]%2) == 0)
+            {
+                int temp = nums[i];
+                nums[i] = nums[left];
+                nums[left++] = temp;
+            }
+        }
+        return nums;        
+    }
+}
