@@ -76,6 +76,13 @@ class VariBS {
             else
             {
                 end--;   //only difference from the last question 
+
+                //LIL TWEAK to fix the question was to find the min idx as well
+                // if (nums[end - 1] > nums[end]) {
+                //     start = end;
+                //     break;
+                // }
+                // end--;
             }
         }
         return nums[start];        
