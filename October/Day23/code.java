@@ -31,5 +31,53 @@ class BSVaration {
             }            
         }
         return nums[start];
+
+        // //better while loop
+        // while(start < end)
+        // {
+        //     int mid = start + (end-start)/2;
+            
+        //     if(nums[mid] > nums[end])
+        //     {
+        //         start = mid + 1;
+        //     }
+        //     else
+        //     {
+        //         end = mid;
+        //     }
+        // }
+    }
+}
+
+//154. Find Minimum in Rotated Sorted Array II
+//https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/
+
+class VariBS {
+    public int findMin(int[] nums) {
+        
+        if(nums.length == 0) return -1;
+        if(nums.length == 1) return nums[0];
+        
+        int start = 0;
+        int end = nums.length-1;
+        
+        while(start < end)
+        {
+            int mid = start + (end-start)/2;
+            
+            if(nums[mid] > nums[end])
+            {
+                start = mid + 1;
+            }
+            else if(nums[mid] < nums[end])
+            {
+                end = mid;
+            }
+            else
+            {
+                end--;   //only difference from the last question 
+            }
+        }
+        return nums[start];        
     }
 }
