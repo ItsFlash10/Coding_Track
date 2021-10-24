@@ -45,3 +45,18 @@ class totalNodes {
         return 1+countNodes(root.left)+countNodes(root.right);  
     }
 }
+
+//104. Maximum Depth of Binary Tree
+//https://leetcode.com/problems/maximum-depth-of-binary-tree/
+
+class depthOfBST{
+    public int maxDepth(TreeNode root) {
+        
+        if(root == null) return 0; //no.of nodes at leaf
+        
+        int leftTreeDepth = maxDepth(root.left);
+        int rightTreeDepth = maxDepth(root.right);
+        
+        return Math.max(leftTreeDepth, rightTreeDepth) + 1;
+    }
+}
