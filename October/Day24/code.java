@@ -60,3 +60,21 @@ class depthOfBST{
         return Math.max(leftTreeDepth, rightTreeDepth) + 1;
     }
 }
+
+//111. Minimum Depth of Binary Tree
+//https://leetcode.com/problems/minimum-depth-of-binary-tree/
+
+class minDepOfBST {
+    public int minDepth(TreeNode root) {
+        
+        if(root == null) return 0;
+	    
+	    int leftDepth = minDepth(root.left);
+	    int rightDepth = minDepth(root.right);
+	    
+        //checking for skew binary tree, i.e., jab ek hi side ho saare nodes
+	    if(leftDepth == 0 || rightDepth == 0) return Math.max(leftDepth, rightDepth) + 1;
+	    
+	    return Math.min(leftDepth, rightDepth) + 1;
+    }
+}
