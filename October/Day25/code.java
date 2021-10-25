@@ -34,3 +34,35 @@ class implStr {
         return i + 1;
     }
 }
+
+//Implement strstr
+//https://practice.geeksforgeeks.org/problems/implement-strstr/1/?track=md-string&batchId=144
+
+class GfG
+{
+    //Function to locate the occurrence of the string x in the string s.
+    int strstr(String s, String x)
+    {
+        int sl = s.length();
+        int xl = x.length();
+        
+        if(xl == 0) return 0;
+        if(xl > sl) return -1;
+        
+        for(int i = 0; i<=sl-xl; i++)
+        {
+            int j = 0;
+            
+            for(j  = 0; j<xl; j++)
+            {
+                if(s.charAt(i+j) != x.charAt(j))
+                {
+                    break;
+                }
+            }
+            if(j == xl) return i;
+        }
+        return -1;
+    }
+}
+
