@@ -1,0 +1,36 @@
+package Day25;
+
+//28. Implement strStr()
+//https://leetcode.com/problems/implement-strstr/
+
+class implStr {
+    public int strStr(String haystack, String needle) {
+        
+        int nl = needle.length();
+        int hl = haystack.length();        
+        
+        if (nl == 0)
+            return 0;
+
+        if (hl < nl)
+            return -1;
+        
+        int pos = -1;    
+        // match from end of needle
+        for (int i = nl - 1; i < hl; i++) {
+            pos = match(haystack, needle, i);
+            if (pos != -1) 
+                return pos;
+        } 
+        return -1;
+    }
+    
+    int match(String haystack, String needle, int i) {        
+        for (int j = needle.length() - 1; j >= 0; j--) {                        
+            if (haystack.charAt(i) != needle.charAt(j))
+                return -1;            
+            i--;
+        }
+        return i + 1;
+    }
+}
