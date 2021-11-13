@@ -3,42 +3,21 @@ package Day13;
 //739. Daily Temperatures
 //https://leetcode.com/problems/daily-temperatures/
 
-class Solution {
+class classicStack {
     public int[] dailyTemperatures(int[] temperatures) {
         
-        int n = temperatures.length;
-        Stack<Integer> s = new Stack<>();
-        int[] ans = new int[n];
-        
-        for(int i = n-1; i>=0; i--)
+        int[] answer = new int[temperatures.length];
+        Stack<Integer> st = new Stack<>();
+        for(int i = 0; i<temperatures.length; i++)
         {
-            if(s.empty())
+            while(!st.isEmpty() && temperatures[i] > temperatures[st.peek()])
             {
-                ans[i] = 0;
+                int index = st.pop();
+                answer[index] = i-index;
             }
-            
-            else if(!s.empty() && s.peek() > i)
-            {
-                ans[i] = s.peek();
-            }
-            else if(!s.empty() && s.peek() <= i)
-            {
-                while(!s.empty() && s.peek() <= i)
-                {
-                    s.pop();
-                }
-                if(s.empty())
-                {
-                    ans[i] = 0;
-                }
-                else
-                {
-                    ans[i] = s.peek();
-                }
-            }
-            s.push(i);
+            st.add(i);
         }
         
-        return ans;   
+        return answer;
     }
 }
