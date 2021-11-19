@@ -10,7 +10,7 @@ class hamDis {
         
         while(x > 0 || y > 0)
         {
-            res = (x % 2)^(y % 2);
+            res += (x % 2)^(y % 2);
             
             x >>= 1;
             y >>= 1;
