@@ -3,7 +3,7 @@ package Day2;
 //980. Unique Paths III
 //https://leetcode.com/problems/unique-paths-iii/
 
-class Solution {
+class day2Sol {
     public int uniquePathsIII(int[][] grid) {
         int startI = 0;
         int startJ = 0;
