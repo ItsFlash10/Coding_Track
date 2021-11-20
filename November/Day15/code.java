@@ -4,7 +4,7 @@ import java.util.*;
 //368. Largest Divisible Subset
 //https://leetcode.com/problems/largest-divisible-subset/
 
-public class dPSol 
+class dPSol 
 {
     public List<Integer> largestDivisibleSubset(int[] nums) 
     {

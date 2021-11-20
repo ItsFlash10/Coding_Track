@@ -3,7 +3,7 @@ package Day17;
 //62. Unique Paths
 //https://leetcode.com/problems/unique-paths/
 
-public class unqPaths {
+class unqPaths {
     public int uniquePaths(int m, int n) 
     {
         int[][] grid = new int[m][n];
