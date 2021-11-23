@@ -26,7 +26,7 @@ class DSU {
 }
 class graphFirst {
     public int largestComponentSize(int[] nums) {
-        int n = nums.length;
+        // int n = nums.length;
         int x = nums[0];
         for (int num : nums)
             x = Math.max(x, num);
