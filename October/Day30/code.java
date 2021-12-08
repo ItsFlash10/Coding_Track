@@ -4,7 +4,7 @@ import java.util.*;
 //1044. Longest Duplicate Substring
 //https://leetcode.com/problems/longest-duplicate-substring/
 
-class Solution {
+class longdiosbstrng {
     public String longestDupSubstring(String S) {
         String ans = "";
         
