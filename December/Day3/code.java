@@ -1,9 +1,9 @@
-pacakge Day3;
+package Day3;
 
 //152. Maximum Product Subarray
 //https://leetcode.com/problems/maximum-product-subarray/submissions/
 
-public class mxSubArProd {
+class mxSubArProd {
     public int maxProduct(int[] A) 
     {        
         if (A == null || A.length == 0) 
