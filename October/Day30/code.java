@@ -30,7 +30,7 @@ class Solution {
     private String getDup(int size, String s){
         long H = hash(s.substring(0,size));
 		
-        HashSet<Long> set = new HashSet();
+        HashSet<Long> set = new HashSet<>();
         set.add(H);
 
         long pow = 1;
