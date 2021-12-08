@@ -58,7 +58,7 @@ class anSolGrphUnionFind {
         
         for (String p : unions.keySet()) 
         {
-            List<String> emails = new ArrayList(unions.get(p));
+            List<String> emails = new ArrayList<>(unions.get(p));
             emails.add(0, owners.get(p));
             res.add(emails);
         }
